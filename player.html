@@ -281,18 +281,18 @@
         // let searchParams = new URL(document.location).searchParams;
         // https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
 
-        // let searchParams = new URL(document.location).searchParams;
-        // let name = searchParams.get("name");
-        // if (name) {
-        //     document.getElementById('videoName').innerText = Base64.decode(name);
-        // }
-        // let safeMediaUrl = searchParams.get("media_url");
-        // if (safeMediaUrl){
-        //     let  mediaUrl = Base64.decode(safeMediaUrl)
-        //     document.getElementById("NOwd").value = mediaUrl
-        //     checkCORS(mediaUrl)
-        //     playMedia(mediaUrl)
-        // }
+        let searchParams = new URL(document.location).searchParams;
+        let name = searchParams.get("name");
+        if (name) {
+            document.getElementById('videoName').innerText = Base64.decode(name);
+        }
+        let safeMediaUrl = searchParams.get("media_url");
+        if (safeMediaUrl){
+            let  mediaUrl = Base64.decode(safeMediaUrl)
+            document.getElementById("NOwd").value = mediaUrl
+            checkCORS(mediaUrl)
+            playMedia(mediaUrl)
+        }
     </script>
 
 </body>
