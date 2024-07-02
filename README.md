@@ -11,11 +11,18 @@ online  m3u8 player, mdp player, IPTV show player
  - 调用飞鸟m3u8下载器，下载视频
 
 
-## 播放器地址
+## 播放器演示地址
 
 https://player.himyou.com/  
 
 https://youwen21-github-io.pages.dev/  
 
 https://youwen21.github.io/  
+
+## 效果展示
+m3u8 player,  mpd player
+![player](static/images/player.jpg)
+
+iptv show
+![iptv](static/images/iptv-show1.jpg)
 
