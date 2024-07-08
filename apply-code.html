@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>飞鸟在线播放器</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--    <link href="/boot/css/bootstrap.min.css" rel="stylesheet">-->
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .videoWrapper {
+            position: relative;
+            flex-grow: 1;
+            /*width: 100%;*/
+            /*height: 100vh;*/
+        }
+
+        .videoWrapper video {
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            max-height: 75vh;
+            height: calc(55%);
+        }
+
+        main {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .fooder {
+            width: 100%;
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 0px;
+            height: 20px;
+            padding: 20px;
+        }
+
+        .header {
+            width: 100%;
+            height: 3.6em;
+            background-color: #209CEE;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .menu-item {
+            margin: 0 10px;
+            padding: 10px;
+            border: 1.5px solid #3e8e41;
+            border-radius: 5px;
+        }
+
+        .menu-item:hover {
+            background-color: #3e8e41;
+            /* 鼠标滑过时的背景颜色 */
+        }
+
+        .menu-link {
+            text-decoration: none;
+        }
+
+        a:link {
+            /* font-size: 12px;  */
+            color: #000000;
+            text-decoration: none;
+        }
+
+        a:visited {
+            /* font-size: 12px;  */
+            color: #000000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            /* font-size: 12px;  */
+            color: #000000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="header">
+        <div class="menu">
+            <a href="/" class="a-link menu-item">m3u8/mpd 在线播放器</a>
+            <a href="/iptv-list.html" class="a-link menu-item">IPTV 在线观看</a>
+            <!-- <a href="/cinema.html" class="a-link menu-item">简单私人影视站 DEMO</a> -->
+            <a href="/apply-code.html" class="a-link menu-item">申请激活码</a>
+            <a href="https://v6t.ipip.net/" data-href="https://test-ipv6.com/" class="a-link menu-item"
+                target="_blank">ipV6 检测</a>
+        </div>
+    </div>
+    <div>
+        <h1 id="videoName" style="text-align: center;">申请 飞鸟M3u8下载器 激活码 </h1>
+    </div>
+
+    <main>
+        <button class="btn btn-outline-success" type="button"
+            style="font-size: 24px;  letter-spacing: 1px ; padding: 5px; background-color: #209CEE;"
+            onclick="applyCode()">免费获取激活码</button>
+
+        <div style="margin: 5px;">
+            <p id="listensCode"></p>
+        </div>
+    </main>
+
+
+    <div class="fooder">
+        <div style="margin: 5px;"> 飞鸟M3u8下载器 <a href="https://github.com/youwen21/flybird-m3u8downloader/releases"
+                target="_blank" style="color: #209CEE; text-decoration:underline;">下载</a></div>
+        <div style="margin: 5px;">QQ群:854313352 <a href="https://qm.qq.com/q/rL2UEWHnj2" target="_blank"
+                style="color: #209CEE; text-decoration:underline;">【进群-下载|交流】</a> </div>
+    </div>
+
+    <script>
+        function applyCode() {
+            fetch("https://flybird.himyou.com/api/listen/gen", {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+            }).then(response => response.json())
+                .then(json => {
+                    // console.log(json)
+                    if (json.code == 200) {
+                        document.getElementById("listensCode").innerText = json.data
+                        return
+                    }
+
+                    if (json.code != 200) {
+                        document.getElementById("listensCode").innerText = "获取失败：" + json.msg
+                    }
+                })
+                .catch(err => {
+                    document.getElementById("listensCode").innerText = "获取失败，请加入QQ群获取激活码"
+                    // document.getElementById("tip").style.display="fixed"
+                });
+        }
+
+    </script>
+
+</body>
+
+</html>
