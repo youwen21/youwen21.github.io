@@ -89,8 +89,6 @@
             text-decoration: none; 
         } 
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4953648189792771"
-    crossorigin="anonymous"></script>
 </head>
 
 <body id="body">
@@ -105,12 +103,12 @@
     </div>
 </div>    
     <div>
-        <h1 id="videoName" style="text-align: center;">HLS(.m3u8), DASH(.mpd)视频 在线播放器</h1>
+        <h1 id="videoName" style="text-align: center;">DASH(.mpd)视频 在线播放器</h1>
         <div class="container">
             <div class="input-group mb-3" style="display: flex; justify-content: center; margin: 5px;">
                 <form class="d-flex" role="search" id="search">
                     <input :v-model="mediaUrl" name="vodName" class="form-control me-2" id="NOwd" type="search"
-                        placeholder="请输入视频地址, 支持.m3u8,.mpd,.mp4,.webm,.mov等格式" aria-label="Search"
+                        placeholder="请输入视频地址, 支持mpd格式" aria-label="Search"
                         style=" width: 600px; line-height: 1.5rem; max-width:98vw;">
                     <button class="btn btn-outline-success" type="button" style="width: 80px; line-height: 1.5rem;"
                         onclick="changeSrc()">播 放</button>
@@ -154,7 +152,6 @@
     import { Base64 } from 'https://cdn.jsdelivr.net/npm/js-base64@3.7.7/base64.min.js';
     </script> -->
     <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.7/base64.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.11/dist/hls.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dashjs@4.7.4/dist/dash.all.min.js"></script>
 
     <script>
@@ -254,50 +251,26 @@
             // checkCORS(Base64.encodeURI(mediaUrl))
             var video = document.getElementById('video');
 
-            if (isM3u(mediaUrl)) {
-                //
-                // First check for native browser HLS support
-                //
-                if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = mediaUrl;
-                    //
-                    // If no native HLS support, check if HLS.js is supported
-                    //
-                } else if (Hls.isSupported()) {
-                    var hls = new Hls();
-                    hls.loadSource(mediaUrl);
-                    hls.attachMedia(video);
-                }
-                video.play()
-                return
-            } else if (isDash(mediaUrl)) {
-                var player = dashjs.MediaPlayer().create();
-                player.initialize(video, mediaUrl, true);
-                return
-            } else {
-                // https://stackoverflow.com/questions/5235145/changing-source-on-html5-video-tag
-
-                video.src = mediaUrl;
-                video.play();
-                return
-            }
+            var player = dashjs.MediaPlayer().create();
+            player.initialize(video, mediaUrl, true);
+             
         }
 
         // let searchParams = new URL(document.location).searchParams;
         // https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
 
-        let searchParams = new URL(document.location).searchParams;
-        let name = searchParams.get("name");
-        if (name) {
-            document.getElementById('videoName').innerText = Base64.decode(name);
-        }
-        let safeMediaUrl = searchParams.get("media_url");
-        if (safeMediaUrl){
-            let  mediaUrl = Base64.decode(safeMediaUrl)
-            document.getElementById("NOwd").value = mediaUrl
-            checkCORS(mediaUrl)
-            playMedia(mediaUrl)
-        }
+        // let searchParams = new URL(document.location).searchParams;
+        // let name = searchParams.get("name");
+        // if (name) {
+        //     document.getElementById('videoName').innerText = Base64.decode(name);
+        // }
+        // let safeMediaUrl = searchParams.get("media_url");
+        // if (safeMediaUrl){
+        //     let  mediaUrl = Base64.decode(safeMediaUrl)
+        //     document.getElementById("NOwd").value = mediaUrl
+        //     checkCORS(mediaUrl)
+        //     playMedia(mediaUrl)
+        // }
     </script>
 
 </body>

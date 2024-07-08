@@ -94,7 +94,8 @@
 <body id="body">
 <div class="header">
     <div class="menu">
-        <a href="/" class="a-link menu-item">m3u8/mpd 在线播放器</a>
+        <a href="/" class="a-link menu-item">m3u8在线播放器</a>
+        <a href="/mpd-player.html" class="a-link menu-item">mpd在线播放器</a>
         <a href="/iptv-list.html" class="a-link menu-item">IPTV 在线观看</a>
         <!-- <a href="/cinema.html" class="a-link menu-item">简单私人影视站 DEMO</a> -->
         <a href="/apply-code.html" class="a-link menu-item" >申请激活码</a>
@@ -102,7 +103,7 @@
     </div>
 </div>    
     <div>
-        <h1 id="videoName" style="text-align: center;">HLS(.m3u8), DASH(.mpd)视频 在线播放器</h1>
+        <h1 id="videoName" style="text-align: center;">HLS(.m3u8) 在线播放器</h1>
         <div class="container">
             <div class="input-group mb-3" style="display: flex; justify-content: center; margin: 5px;">
                 <form class="d-flex" role="search" id="search">
@@ -152,7 +153,6 @@
     </script> -->
     <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.7/base64.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.11/dist/hls.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dashjs@4.7.4/dist/dash.all.min.js"></script>
 
     <script>
 
@@ -193,14 +193,6 @@
             }
 
             return mediaUrl.indexOf(".m3u") !== -1;
-        }
-
-        function isDash(mediaUrl) {
-            if (mediaUrl === undefined) {
-                return false
-            }
-
-            return mediaUrl.indexOf(".mpd") !== -1;
         }
 
         // https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
@@ -250,34 +242,20 @@
         function playMedia(mediaUrl) {
             // checkCORS(Base64.encodeURI(mediaUrl))
             var video = document.getElementById('video');
-
-            if (isM3u(mediaUrl)) {
-                //
-                // First check for native browser HLS support
-                //
-                if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = mediaUrl;
-                    //
-                    // If no native HLS support, check if HLS.js is supported
-                    //
-                } else if (Hls.isSupported()) {
-                    var hls = new Hls();
-                    hls.loadSource(mediaUrl);
-                    hls.attachMedia(video);
-                }
-                video.play()
-                return
-            } else if (isDash(mediaUrl)) {
-                var player = dashjs.MediaPlayer().create();
-                player.initialize(video, mediaUrl, true);
-                return
-            } else {
-                // https://stackoverflow.com/questions/5235145/changing-source-on-html5-video-tag
-
+    
+            if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = mediaUrl;
-                video.play();
-                return
+                //
+                // If no native HLS support, check if HLS.js is supported
+                //
+            } else if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(mediaUrl);
+                hls.attachMedia(video);
             }
+            
+            video.play()
+                
         }
 
         // let searchParams = new URL(document.location).searchParams;
