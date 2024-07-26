@@ -21,8 +21,8 @@ https://youwen21.github.io/
 
 ## 效果展示
 m3u8 player,  mpd player
-![player](static/images/player.jpg)
+![player](./static/images/player.jpg)
 
 iptv show
-![iptv](static/images/iptv-show1.jpg)
+![iptv](./static/images/iptv-show1.jpg)
 
