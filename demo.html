@@ -5,13 +5,28 @@
     <title>用户中心 - linux.do 用户授权</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/app.css" rel="stylesheet">
 </head>
 <body>
-    <a href="https://ldauth.himyou.com/oauth2/auth?redirect_to=https://player.himyou.com/auth_finish.html?check-param-x=check_in_your_service"><button>linux.do 授权</button></a>
+    <div class="header">
+        <div class="menu">
+            <a href="/" class="a-link menu-item">m3u8在线播放器</a>
+            <a href="/mpd-player.html" class="a-link menu-item">mpd在线播放器</a>
+            <a href="/iptv-list.html" class="a-link menu-item">IPTV 在线观看</a>
+            <!-- <a href="/cinema.html" class="a-link menu-item">简单私人影视站 DEMO</a> -->
+            <!-- <a href="/download.html" class="a-link menu-item">软件下载</a> -->
+            <a href="/apply-code.html" class="a-link menu-item" >申请激活码</a>
+            <a href="https://v6t.ipip.net/" data-href="https://test-ipv6.com/" class="a-link menu-item" target="_blank">ipV6 检测</a>
+            <a href="/demo.html" class="a-link menu-item">LD OAuth2</a>
+        </div>
+    </div>  
+
+    <div style="display: flex; justify-content: center; padding: 20px;">
+        <a href="https://ldauth.himyou.com/oauth2/auth?redirect_to=https://player.himyou.com/auth_finish.html?check-param-x=check_in_your_service"><button style="font-size: 20px;">linux.do 授权</button></a>
+    </div>
+    
 </body>
 <style>
-    body{
-        padding: 20px;
-    }
+   
 </style>
 </html>
