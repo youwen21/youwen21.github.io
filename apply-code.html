@@ -16,6 +16,13 @@
             cursor: pointer;
             background-color: #36a80a;
         }
+
+        .main{
+            margin: 0 auto;
+            width: 1200px;
+            margin-top: 20px;
+            text-align: left;
+        }
     </style>
 </head>
 
@@ -30,44 +37,31 @@
         </div>
     </div>
     <div  style="text-align: center;">
-        <h1 id="videoName"> 申请激活码 </h1>
+        <h1 id="videoName"> 微信扫一扫 申请激活码 </h1>
+        <img src="/static/images/apply-code-qr.png" alt="申请激活码" style="width: 100%; max-width: 400px; margin: 20px 0;">
         <p>可激活 flybird-m3u8downloader, flybird-iptv, flybird-url-checker</p>
     </div>
 
     <main>
-        <div>
+        <div class="main">
+            <h2>软件下载</h2>
             <div>
-                <h3>flybird-m3u8downloader  下载地址</h3>
-                <p>windows 3.3.0之前版本不再支持使用， 请升级到最新版本。</p>
                 <p>
                     <!-- <a target="download" href="https://sourceforge.net/projects/flybird-m3u8downloader"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">sourceforge</a> -->
-                    <a target="download" href="https://github.com/youwen21/flybird-m3u8downloader/releases/"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">github</a>
+                   <span>flybird-m3u8downloader 下载地址</span> <a target="download" href="https://github.com/youwen21/flybird-m3u8downloader/releases/"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">github</a>
                 </p>
             </div>
             <div>
                 <h3>flybird-iptv 下载地址</h3>
                 <p>
                     <!-- <a target="download" href="https://sourceforge.net/projects/flybird-iptv"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">sourceforge</a> -->
-                    <a target="download" href="https://github.com/youwen21/flybird-iptv/releases/"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">github</a>
+                    <span>flybird-iptv 下载地址</span> <a target="download" href="https://github.com/youwen21/flybird-iptv/releases/"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">github</a>
                 </p>
             </div>
-            <div>
-                <h3>flybird-url-checker 下载地址</h3>
-                <p>
-                    <!-- <a target="download" href="https://sourceforge.net/projects/flybird-url-checker"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">sourceforge</a> -->
-                    <a target="download" href="https://github.com/youwen21/flybird-url-checker/releases/"  style="color: #209CEE; text-decoration:underline; margin:0 20px;">github</a>
-                </p>
-            </div>
-
-            <h3>无法下载软件 或者 无法申请激活码时，加qq群下载和申请激活码</h3>
         </div>
         
-        <button class="btn btn-outline-success apply-code-btn" type="button"
-            onclick="applyCode()">点我免费获取激活码</button>
-
-        <div style=" max-width: 800px; margin-bottom: 100px;">
-            <p id="listensCode" style="word-break: break-word;"></p>
-        </div>
+        <!-- <button class="btn btn-outline-success apply-code-btn" type="button"
+            onclick="applyCode()">点我免费获取激活码</button> -->
     </main>
 
 

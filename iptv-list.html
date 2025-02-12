@@ -37,6 +37,10 @@
         [v-cloak] {
             display: none;
         }
+
+        .iptv-link{
+            margin: 10px auto;
+        }
     </style>
 </head>
 
@@ -68,14 +72,51 @@
 
     <main>
         <h3>快捷IPTV链接</h3>
-        <div>
+        <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/YueChan/Live/main/APTV.m3u" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/YueChan/Live/main/APTV.m3u")'>https://raw.githubusercontent.com/YueChan/Live/main/APTV.m3u</a>
+        </div>
+        <div class="iptv-link">
             <a data-href="https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u" target="_blank"
-                onclick='quickLink("https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u")'>[ipv6可播放]https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u</a>
+                onclick='quickLink("https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u")'>https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u</a>
         </div>
-        <div>
-            <a data-href="https://raw.githubusercontent.com/iptv-org/iptv/master/streams/ba.m3u" target="_blank"
-                onclick='quickLink("https://raw.githubusercontent.com/iptv-org/iptv/master/streams/ba.m3u")'>[ipv4部分可播放]https://raw.githubusercontent.com/iptv-org/iptv/master/streams/ba.m3u</a>
+        <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u")'>https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u</a>
         </div>
+        <!-- <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u")'>https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u</a>
+        </div> -->
+        <!-- <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/merged_output.txt" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/merged_output.txt")'>https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/merged_output.txt</a>
+        </div> -->
+        <!-- <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/xzw832/cmys/main/S_CCTV.txt" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/xzw832/cmys/main/S_CCTV.txt")'>https://raw.githubusercontent.com/xzw832/cmys/main/S_CCTV.txt</a>
+        </div> -->
+        <!-- <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/xzw832/cmys/main/S_weishi.txt" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/xzw832/cmys/main/S_weishi.txt")'>https://raw.githubusercontent.com/xzw832/cmys/main/S_weishi.txt</a>
+        </div> -->
+        <!-- <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/yuanzl77/IPTV/master/live.txt" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/yuanzl77/IPTV/master/live.txt")'>https://raw.githubusercontent.com/yuanzl77/IPTV/master/live.txt</a>
+        </div> -->
+        <!-- <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt")'>https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt</a>
+        </div> -->
+        <!-- <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt")'>https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt</a>
+        </div> -->
+        <div class="iptv-link">
+            <a data-href="https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u" target="_blank"
+                onclick='quickLink("https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u")'>https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u</a>
+        </div>
+        
         
         <div class="iptv-container" id="app">
             <div v-cloak>
@@ -196,6 +237,7 @@
 
             fetch(iptvUrl).then((resp) => resp.text())
                 .then(data => {
+
                     doRender(data)
                 }).catch(error => {
                     // 处理错误情况
